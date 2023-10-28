@@ -67,7 +67,7 @@
     command: "usermod -aG docker jenkins"
 
   - name: Add Docker repository
-    command: "docker login -u saidamo -p sairam2127!" 
+    command: "docker login -u deepakdegreeze -p kdeepak18d" 
     
   - name: mkdir
     command: "mkdir /var/lib/jenkins/.docker" 
