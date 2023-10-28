@@ -25,9 +25,6 @@ pipeline {
           }
         }
       }
-    stage('Docker deployment'){
-    sh 'docker run -d -p 8090:8080 --name tomcattest deepakdegreeze/cicd-poc-jenkins-ansible:$BUILD_NUMBER' 
-    }
     }
 }
 
