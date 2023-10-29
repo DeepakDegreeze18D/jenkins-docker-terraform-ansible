@@ -73,7 +73,7 @@
     command: "mkdir /var/lib/jenkins/.docker" 
     
   - name: copy
-    command: "cp $HOME/.docker/config.jon /var/lib/jenkins/.docker/config.json"
+    command: "cp $HOME/.docker/config.json /var/lib/jenkins/.docker/config.json"
     
   - name: mkdir
     command: "chown -R jenkins:jenkins /var/lib/jenkins/.docker" 
