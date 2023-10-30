@@ -6,14 +6,13 @@ pipeline {
         script{
                 def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
                 sh "${mvnHome}/bin/mvn package"
-                sh 'mv target/myweb*.war target/newapp.war'
         }
       }
     }
     stage('Building Docker Image') {
       steps{
         script {
-          sh "docker build -t deepakdegreeze/myweb:0.0.2 ."
+          sh "docker build -t cicd-poc-jenkins-ansible:$BUILD_NUMBER ."
         }
       }
     }
@@ -22,14 +21,14 @@ pipeline {
         script {
           sh "echo $USER"
           sh "docker login -u deepakdegreeze -p kdeepak18d"
-          sh "docker push deepakdegreeze/myweb:0.0.2 ."
+          sh "docker push cicd-poc-jenkins-ansible:$BUILD_NUMBER ."
           }
         }
       }
     stage('Docker deployment'){
       steps{
         script {
-          sh 'docker run -d -p 8090:8080 --name tomcattest deepakdegreeze/myweb:0.0.2 .' 
+          sh 'docker run -d -p 8090:8080 --name tomcattest cicd-poc-jenkins-ansible:$BUILD_NUMBER .' 
           }
         }
       }
